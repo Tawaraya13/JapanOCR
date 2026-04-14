@@ -25,3 +25,5 @@ dependencies = [
 [tool.setuptools]
 packages = ["screenshot","system"]
 
+[project.scripts]
+manga-ocr-gui = "Manga_OCR_GUI.main:main"
