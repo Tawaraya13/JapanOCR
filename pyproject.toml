@@ -25,5 +25,5 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["screenshots","system"]
+packages = ["screenshot","system"]
 
