@@ -24,3 +24,6 @@ dependencies = [
   "furigana @ git+https://github.com/Tawaraya13/furigana.git"
 ]
 
+[tool.setuptools]
+packages = ["screenshots","system"]
+
