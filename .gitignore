@@ -38,3 +38,8 @@ htmlcov/
 
 # Byte-compiled
 *.pyc
+
+#Docker
+Dockerfile
+.dockerignore
+*.tar

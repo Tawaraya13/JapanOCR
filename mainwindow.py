@@ -15,13 +15,16 @@ import io
 from deep_translator import GoogleTranslator
 from furigana.furigana import return_html
 import pytesseract
+from huggingface_hub import InferenceClient
+from transformers import pipeline
+
 
 logger = logging.getLogger(__name__)
 
 class main_window(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.mocr = MangaOcr()
+        #self.mocr = MangaOcr()
         self.gtranslator = GoogleTranslator
         self.ocrselector =1
 
@@ -37,8 +40,7 @@ class main_window(QMainWindow):
         self.viewtext.setHtml(self.ocrtext)
 
         self._window_position = QPoint(0,0)   
-        
-        #toolbar     
+         
         toolbar = QToolBar("Main Toolbar") 
         self.addToolBar(Qt.TopToolBarArea, toolbar)
 
@@ -216,17 +218,27 @@ class main_window(QMainWindow):
             self.pytesseractOCR(image)
         elif self.ocrselector == 2:
             print('running mangaocr')
-            self.mangaOCR(image)
+            #self.mangaOCR(image, self.client)
 
-    def mangaOCR(self, image):
+    # def mangaOCR(self, image):
+    #     buffer = QBuffer()
+    #     buffer.open(QIODevice.WriteOnly)
+    #     image.save(buffer, "PNG")  # save QImage into buffer as PNG
+    #     pil_image = Image.open(io.BytesIO(buffer.data()))
+    #     self.ocrtext = self.mocr(pil_image)
+    #     self.viewtext.setHtml(self.ocrtext)
+    #     #self.label.setText(self.ocrtext)
+    #     print(self.ocrtext)
+
+    def mangaOCR(self, image, client):
         buffer = QBuffer()
         buffer.open(QIODevice.WriteOnly)
         image.save(buffer, "PNG")  # save QImage into buffer as PNG
-        pil_image = Image.open(io.BytesIO(buffer.data()))
-        self.ocrtext = self.mocr(pil_image)
-        self.viewtext.setHtml(self.ocrtext)
+        pil_image=Image.open(io.BytesIO(buffer.data()))
+        result = self.pipe(pil_image)
+        self.viewtext.setHtml(result)
         #self.label.setText(self.ocrtext)
-        print(self.ocrtext)
+        print(result)
 
     def pytesseractOCR(self, image):
         buffer = QBuffer()
