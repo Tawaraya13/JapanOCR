@@ -6,7 +6,7 @@ Small PySide6 GUI that captures a screen region and runs OCR (pytesseract or man
 Quick setup
 -----------
 
-1. Downloaad the file
+1. Downloaad the file [Link](https://github.com/Tawaraya13/ocr/releases/tag/beta)
 2. Install mecab and choose UTF-8 https://github.com/ikegami-yukino/mecab/releases/download/v0.996.2/mecab-64-0.996.2.exe
 3. Add mecab directory to PATH
 4. Install Latest VC Redist https://learn.microsoft.com/id-id/cpp/windows/latest-supported-vc-redist?view=msvc-170
