@@ -1,10 +1,10 @@
 deep_translator==1.11.4
-#manga_ocr==0.1.14
+furigana==0.0.7.1
 Pillow==12.2.0
 pyside6==6.11.0
 pyside6_addons==6.11.0
 pyside6_essentials==6.11.0
 pytesseract==0.3.13
-mecab-python3==1.0.12
 unidic==1.1.0
+mecab-python3==1.0.12
 furigana @ git+https://github.com/Tawaraya13/furigana.git
