@@ -142,8 +142,8 @@ class main_window(QMainWindow):
     
     def loadingscreen(self):
         gif_path = os.path.join(self.base_path,"assets", "Loading_icon.gif")
-        gif_url = f"file://"+ urllib.parse.quote(gif_path)
-        print(gif_url)
+        gif_url = QUrl.fromLocalFile(gif_path).toString()
+        print('showing loading url: ', gif_url)
         self.loading = f"""<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
             <img src="{gif_url}" alt="Loading..."/>
         </div>"""
