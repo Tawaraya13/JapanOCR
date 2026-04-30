@@ -141,10 +141,12 @@ class main_window(QMainWindow):
         context.exec(e.globalPos())
     
     def loadingscreen(self):
-        gif_path = os.path.join(self.base_path,"assets", "Loading_icon.gif")
-        gif_url = QUrl.fromLocalFile(gif_path).toString()
-        self.loading = f"""<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-            <img src="{gif_url}" alt="Loading..."/>
-        </div>"""
-        self.viewtext.setHtml(self.loading)
-
+        gif_path = os.path.join(self.base_path, "assets", "Loading_icon.gif")
+        self.loading = """
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+            <img src="assets/Loading_icon.gif" alt="Loading..."/>
+        </div>
+        """
+        # Set base URL to your root folder (this is the fix)
+        base_url = QUrl.fromLocalFile(self.base_path + "/")
+        self.viewtext.setHtml(self.loading, base_url)
